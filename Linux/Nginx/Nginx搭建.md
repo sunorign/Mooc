@@ -51,7 +51,7 @@ mkdir app download logs work backup
 >
 > nginx 是开源、高性能、可靠的http中间件、代理服务
 
-![1560691548003](.\img\1560691548003.png)
+![1560691548003](./img/1560691548003.png)
 
 ### Nginx 优势：多路 IO 复用
 
@@ -110,7 +110,7 @@ while true{
 
 `rpm -ql nginx`
 
-![Nginx 安装目录](.\img\Nginx 安装目录.png)
+![Nginx 安装目录](./img/Nginx 安装目录.png)
 
 #### 编译参数
 
@@ -678,7 +678,7 @@ server {
 
 如果中间通过中间件转发，那么就不能精准屏蔽 IP1
 
-![1560947320(1)](.\img\1560947320(1).png)
+![1560947320(1)](./img/1560947320(1).png)
 
 **补漏方案**
 
@@ -686,7 +686,7 @@ server {
 
 http_x_forwarded_for，在服务端可以查看到所有的 IP
 
-![1560947527(1)](.\img\1560947527(1).png)
+![1560947527(1)](./img/1560947527(1).png)
 
 http_x_forwarded_for = Client IP, Proxy(1) IP, Proxy(2) IP, ...
 
