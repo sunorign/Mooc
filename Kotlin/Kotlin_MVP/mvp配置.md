@@ -2,8 +2,13 @@
 
 > （右击打开链接）: [详解八大UML类图符号的表示法 .pdf](详解八大UML类图符号的表示法 .pdf) 
 
+<<<<<<< HEAD
 ### Google 官方简单框架
 
+=======
+### Google 官方简单框架  
+   
+>>>>>>> 93d6c04df9d4bebc21d98978640b566a337b0c6a
 ![Google simpleMVP](png\Google simpleMVP.png)
 
 ### 改造后
