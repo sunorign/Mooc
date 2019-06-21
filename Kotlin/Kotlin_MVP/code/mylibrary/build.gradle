@@ -1,0 +1,69 @@
+if (myLibraryIsModule.toBoolean()) {
+    apply plugin: 'com.android.library'
+}else{
+    apply plugin: 'com.android.application'
+}
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets{
+        main {
+            if (myLibraryIsModule.toBoolean()) {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                java{
+                    exclude 'debug/**'
+                }
+            } else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Anko Commons
+    api "org.jetbrains.anko:anko-commons:$anko_version"
+    // Appcompat-v7 (only Anko Commons)
+    api "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
+    // Support-v4 (only Anko Commons)
+    api "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
+    api "com.squareup.okhttp3:okhttp:3.10.0"
+    api "com.squareup.okhttp3:logging-interceptor:3.10.0"
+    api "com.squareup.retrofit2:retrofit:2.4.0"
+    api "com.squareup.retrofit2:converter-gson:2.4.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+    implementation "com.alibaba:arouter-api:1.4.1"
+    kapt "com.alibaba:arouter-compiler:1.2.2"
+}
+repositories {
+    mavenCentral()
+}

@@ -6,7 +6,7 @@
 
 ![1560949419(1)](./img/1560949419(1).png)
 
-### 静态资源服务场景 CDN
+### 1、静态资源服务场景 CDN
 
 > 传输延时的最小化
 
@@ -112,7 +112,7 @@ server{
 }
 ```
 
-### 浏览器缓存
+### 2、浏览器缓存
 
 #### 校验过期机制
 
@@ -143,9 +143,68 @@ location ~ .*\.(htm|html)${
 }
 ```
 
+### 3、跨域访问
+
+#### 浏览器禁止跨域访问
+
+> 不安全，容易出现CSRF攻击
+
+#### Nginx 打开跨域访问
+
+> 添加头信息
+
+``` nginx
+Syntax:add_header name value [always];
+Default:-
+Context:http,server,location,if in location
+```
+
+客户端识别` Access-Control-Allow-Origin` 头信息，如果服务端允许跨域访问，客户端就打开（默认阻止）
+
+```nginx
+location ~ .*\.(htm|html)${
+    #允许跨域访问的域名
+    add_header Access-Control-Allow-Origin http:www.czx.com;
+    #允许请求的方法
+    add_header Access-Control-Allow-Methods GET,POST,DELETE,OPTIONS;
+    root /opt/app/code;
+}
+```
+
+### 4、防盗链
+
+> 防止网站资源被盗用
+>
+> 设置思路：区别哪些请求是非正常的用户请求
+
+#### http_refer
+
+> 浏览器上一次请求的地址
+
+```nginx
+Syntax：valid_referers none|blocked|server_names|string..;
+Default:-
+Context:server,location
+```
+
+```nginx
+location ~ .*\.(jpg|gif|png)${
+    #valid_referers 允许哪些 referers 信息来访问
+    #none 表示没有带 regerers 信息的
+    #blocked 表示没有带协议信息的
+    #192.168.1.80
+    valid_referers none blocked 192.168.1.80 ~/google\./;
+    #请求信息不包含在 valid_referers，$invalid_referer 为1（true）
+    if($invalid_referer){
+        return 403;
+    }
+    root /opt/app/code/images;
+}
+```
+
 ## 二、代理服务
 
-
+**正向代理**
 
 ## 三、负载均衡调度器
 
