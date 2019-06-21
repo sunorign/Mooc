@@ -661,7 +661,7 @@ server {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
     }
-    #~ 访问路径模式匹配，针对 admin.html
+    #~ 访问路径模式匹配，访问路径以 admin.html 开头
     location ~ ^/admin.html{
      	root   /usr/share/nginx/html;
         #限制客户端ip
