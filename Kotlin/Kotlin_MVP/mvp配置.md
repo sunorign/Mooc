@@ -4,11 +4,11 @@
 
 ### Google 官方简单框架
 
-![Google simpleMVP](./png/Google simpleMVP.png)
+![Google simpleMVP](png/Google simpleMVP.png)
 
 ### 改造后
 
-![Local Mvp](./png/Local Mvp.png)
+![Local Mvp](png\Local Mvp.png)
 
 ## KOTLIN 配置
 
@@ -23,9 +23,9 @@ apply plugin: 'kotlin-android-extensions'
 
 > ( 右击打开链接)
 >
-> 1. [搜索并下载 kotlin 插件](./png/1553526235(1).png)
+> 1. [搜索并下载 kotlin 插件](png\1553526235(1).png)
 >
-> 2. [选择 kotlin 工具](./png/1553525902(1).png)
+> 2. [选择 kotlin 工具](png\1553525902(1).png)
 > 3. [选择转换android](png\1553526382(1).png)
 > 4. [模块和版本选择](png\1553526445(1).png)
 > 5. 配置之后，默认按：crtl + shift + alt + k 可将 **xx.java** 转成 **xx.kt** 文件
