@@ -2,9 +2,9 @@
 
 > （右击打开链接）: [详解八大UML类图符号的表示法 .pdf](详解八大UML类图符号的表示法 .pdf) 
 
-### Google 官方简单框架
-
-![Google simpleMVP](./png/Google simpleMVP.png)
+### Google 官方简单框架  
+   
+![Google simpleMVP](/png/Google simpleMVP.png)
 
 ### 改造后
 
