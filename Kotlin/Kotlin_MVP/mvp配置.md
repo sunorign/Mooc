@@ -4,7 +4,7 @@
 
 ### Google 官方简单框架  
    
-![Google simpleMVP](/png/Google simpleMVP.png)
+![Google simpleMVP](png\Google simpleMVP.png)
 
 ### 改造后
 
