@@ -204,7 +204,59 @@ location ~ .*\.(jpg|gif|png)${
 
 ## 二、代理服务
 
-**正向代理**
+### 1、正向代理
+
+> 代理的对象是客户端，为客户端服务
+
+![1561088180(1)](img/1561088180(1).png)
+
+### 2、反向代理
+
+> 代理的对象是服务端，为服务端服务
+
+![1561088387(1)](/img/1561088387(1).png)
+
+### 3、代理配置
+
+| 协议                      | Nginx | Server        |
+| :------------------------ | :---: | ------------- |
+| **HTTP**                  |   -   | *server       |
+| **Websocket**（长链接）   |   -   | Socket server |
+| **GRPC**（Go语言）        |   -   | Grpc server   |
+| ICMP\POP\IMAP（邮件分发） |   -   | Mail server   |
+| **HTTPS**                 |   -   | Http server   |
+| RTMP（流媒体）            |   -   | media server  |
+
+| 反向代理模式           | Nginx配置模块           |
+| ---------------------- | ----------------------- |
+| http、websocket、https | ngx_http_proxy_module   |
+| fastcgi                | ngx_http_fastcgi_module |
+| uwsgi                  | ngx_http_uwsgi_module   |
+| grpc                   | ngx_http_v2_module      |
+
+| 正向代理 | Nginx配置模块         |
+| -------- | --------------------- |
+| http     | ngx_http_proxy_module |
+
+#### http_proxy
+
+```nginx
+#URL:
+#http://localhost:8000/uri/
+#https://192.168.1.1:8000/uri/
+#http://unix:/tmp/backend.socket:/uri/;
+Syntax:proxy_pass URL
+Default:-
+Context:location,if in location,limit_except
+```
+
+```nginx
+location ~/test_proxy.html${
+    proxy_pass http://127.0.0.1:8080
+}
+```
+
+
 
 ## 三、负载均衡调度器
 
