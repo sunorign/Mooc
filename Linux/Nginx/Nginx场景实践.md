@@ -256,10 +256,117 @@ location ~/test_proxy.html${
 }
 ```
 
+**代理配置语法补充**
+
+```nginx
+#缓冲区
+Syntax:proxy_buffering on|off;
+Default:proxy_buffering on;
+Context：http,server,location
+
+#跳转重定向
+Syntax: proxy_redirect default;
+		proxy_redirect off;
+		proxy_redirect redirect replacement;
+Default:proxy_redirect default;
+Context:http,server,location
+
+#头信息
+Syntax:proxy_set_header field value;
+Default:proxy_set_header Host $proxy_host;
+		proxy_set_header Connection close;
+Context:http,server,location
+#扩展：proxy_hide_header、proxy_set_body
+
+#超时
+Syntax:proxy_connect_timeout time;
+Default:proxy_connect_timeout 60s;
+Context:http,server,location
+#扩展：proxy_read_timeout、proxy_send_timeout
+```
+
+**补充配置和规范**
+
+```nginx
+location /{
+    proxy_pass http://127.0.0.1:8080;
+    include proxy_params;
+}
+```
+
+`proxy_params` file
+
+```nginx
+proxy_redirect default;
+
+proxy_set_header Host $http_host;
+proxy_set_header X-Real-IP $remote_addr;
+
+proxy_connect_timeout 30;
+proxy_send_timeout 60;
+proxy_read_timeout 60;
+
+proxy_buffer_size 32k;
+proxy_buffering on;
+proxy_buffers 4 128k;
+proxy_busy_buffers_size 256k;
+proxy_max_temp_file_size 256k;
+```
+
+## 三、动态缓存
+
+> 缓存分为：客户端缓存、代理缓存、服务端缓存
+
+### 1、proxy_cache
+
+```nginx
+#配置语法
+Syntax:proxy_cache_path path [levels=levels][use_temp_path=on|off] key_zone=name:size [inactive=time]
+[max_size=size]...
+Default:-
+Context:http
+
+Syntax:proxy_cache zone|off;
+Default:proxy_cache off;
+Context:http,server,location
+
+#缓存过期周期
+Syntax:proxy_cache_valid [code...] time;
+Default:-
+Context:http,server,location
+
+#缓存的维度
+Syntax:proxy_cache_key string;
+Default:proxy_cache_key $scheme$proxy_host$request_uri;
+Context:http,server,location
+```
+
+```nginx
+http{
+    #levels 2层目录分级；keys_zone=开辟空间的名称：大小；
+    #max_size 最大大小 inactive=不活跃的时间，超过时间清除
+    #use_temp_path=off
+    proxy_cache_path /opt/app/cache levels=1:2 keys_zone=czx_cache:10m max_size=10g inactive=60m use_temp_path=off;
+    server{
+        location/{
+            proxy_cache czx_cache;
+            proxy_pass http://www.baidu.com;
+            #返回 200 304的信息，12小时过期
+            proxy_cache_valid 200 304 12h
+            #返回其他的10分钟过期
+            proxy_cache_valid any 10m;
+            #缓存的key
+            proxy_cache_key $host$uri$is_args$args;
+            #缓存头信息
+            add_header Nginx-Cache "$upstream_cache_status";
+            #出现以下参数跳过，访问下一台服务器
+            proxy_next_upstream error timeout invalid_header http_500 http502 http503 http504;
+            include proxy_params;
+        }
+    }
+}
+```
 
 
-## 三、负载均衡调度器
 
-
-
-## 四、动态缓存
+## 四、
