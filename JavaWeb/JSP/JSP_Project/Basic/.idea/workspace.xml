@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b4d958f1-4cb9-4f49-87d9-1a5836a31994" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1VKOzjcbBv16TpEd4nlAWVtOYow" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.czx.Main" />
+      <module name="Basic" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b4d958f1-4cb9-4f49-87d9-1a5836a31994" name="Default Changelist" comment="" />
+      <created>1576998584350</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576998584350</updated>
+      <workItem from="1576998588247" duration="6244000" />
+      <workItem from="1577005686692" duration="2000" />
+      <workItem from="1577009333049" duration="31000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="462" y="162" key="SettingsEditor" timestamp="1577005017675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="462" y="162" key="SettingsEditor/3840.538.1536.800/0.0.1920.1040@0.0.1920.1040" timestamp="1577005017675" />
+    <state x="623" y="226" width="672" height="678" key="search.everywhere.popup" timestamp="1577000441993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="226" width="672" height="678" key="search.everywhere.popup/3840.538.1536.800/0.0.1920.1040@0.0.1920.1040" timestamp="1577000441993" />
+  </component>
+</project>
